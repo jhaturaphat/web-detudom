@@ -132,7 +132,9 @@ li{
     border-bottom: 3px solid #cb04aa;
     transform: scale(1.1);
 }
-
+.bar-menu{
+    display: none;
+}
 /* dropdown menu */
 .nav-menu .dropdown-menu{ 
     display: none;   
@@ -222,7 +224,7 @@ li{
     padding: 5px; 
 }
 .service-box p a{
-    color: red;
+    color: red; 
 }
 .service-box img{    
     width: 100%;

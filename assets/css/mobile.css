@@ -11,8 +11,43 @@ html, body {
   display: none !important;
 } 
 /* menu bar */
+.banner{
+  height:auto;
+}
+.nav-menu{
+  display: none;
+  z-index: 999;
+}
+.nav-menu ul{
+  position: absolute;
+  width: 100%;
+  display: flex; 
+  flex-direction: column; 
+  top: -10px;
+}
+.nav-menu ul{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: yellowgreen;
+  padding-left: 10px;
+}
+.nav-menu ul li{
+  text-align: left;
+}
 .nav-menu .dropdown-menu{
   top: 1.8rem !important;
+}
+.bar-menu{
+  position: absolute;
+  display: block;
+  top: 8px;
+  right: 8px;
+  font-size: 25px;
+  z-index: 9999;
+}
+.bar-menu:hover > .nav-menu{
+  display: flex;
 }
 
 /* slider */
@@ -25,6 +60,9 @@ html, body {
   grid-template-columns: 1fr !important;
   margin: 0 auto;
 }  
+.service-box{
+  width: auto;
+}
 }
 
 @media only screen 
