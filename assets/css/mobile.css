@@ -29,14 +29,29 @@ html, body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: yellowgreen;
+  background-color: #fff;
   padding-left: 10px;
 }
 .nav-menu ul li{
   text-align: left;
 }
+.nav-menu ul li a{
+  font-size: 15px;
+}
+/* dropdown-menu */
 .nav-menu .dropdown-menu{
-  top: 1.8rem !important;
+  position: inherit;
+  top: 0 !important;
+}
+.nav-menu .dropdown-menu li{
+  left: 10px;
+  border: 0;
+  border-left: 2px solid #cb04aa;
+  text-align: left;
+}
+.nav-menu .dropdown-menu li:last-child{
+  border-left: 2px solid #cb04aa; 
+  margin-bottom: 5px;
 }
 .bar-menu{
   position: absolute;
@@ -46,9 +61,7 @@ html, body {
   font-size: 25px;
   z-index: 9999;
 }
-.bar-menu:hover > .nav-menu{
-  display: flex;
-}
+
 
 /* slider */
 .slider figure{
