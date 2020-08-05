@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap');
 @font-face {
     font-family: "modern";
-    src: url("SB-MODERN.TTF");
+    src: url("../SB-MODERN.TTF");
 }
 
 html ,body{
@@ -10,9 +10,9 @@ html ,body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'modern','Kanit',sans-serif;    
-    color: #3e66b0; 
-    overflow-y: scroll; /* has to be scroll, not auto */
+    font-family: 'modern','Kanit',sans-serif;   
+    font-size: 1.2rem; 
+    color: #3e66b0;     
   -webkit-overflow-scrolling: touch; 
 }
 
