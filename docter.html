@@ -9,16 +9,63 @@
     <link rel="stylesheet" href="assets/css/slider.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/mobile.css">
+
+    <link rel="stylesheet" href="assets/css/doctor.css">
+
 </head>
 <body>
     <main-header></main-header>
+
     <section>
-        <div class="slider">
-            <figure>
-                <img src="assets/img/image-contents/silde1.png" alt="">                
-            </figure>
+        <div class="slider-doctor">            
+            <img src="assets/img/image-contents/slide-หมอ.png" width="100%"> 
         </div>
+        <div class="content">
+            <img src="assets/img/icon/ducph.png" alt="">
+            กรุณาเลือกสาขาวิชาที่เชี่ยวชาญเพื่อแสดงรายชื่อแพทย์ตามสาขาวิชาที่เชี่ยวชาญนั้นๆ หรือในกรณีที่ท่านทราบชื่อแพทย์<br>
+            ท่านสามารถเลือกแพทย์ได้จากรายชื่อด้านล่าง
+        </div>
+        <form action="">          
+            <div class="form-g">
+                <div class="form-ctl">
+                    <label for="special">ค้นหาสาขาที่เชี่ยวชาญ</label>
+                    <div class="input-g">
+                        <input type="text" placeholder="ค้นหาสาขาที่เชี่ยวชาญ">
+                        <i class="fas fa-search"></i>
+                    </div>                    
+                </div>
+                <div class="form-ctl">
+                    <label for="special">ค้นหารายชื่อแพทย์</label>
+                    <div class="input-g">
+                        <input type="text" placeholder="ค้นหารายชื่อแพทย์">
+                        <i class="fas fa-search"></i>
+                    </div>  
+                </div>
+            </div>       
+            <div class="s-filter">
+                <label for="">ค้นหาแบบระบุเงื่อนไข</label>
+                <div class="s-filter-item">
+                    <ul>
+                        <li>วันทำงาน</li>
+                        <li><input type="checkbox" name="" id="">จันทร์</li>
+                        <li><input type="checkbox" name="" id="">อังคาร</li>
+                        <li><input type="checkbox" name="" id="">พุธ</li>
+                        <li><input type="checkbox" name="" id="">พฤหัสบดี</li>
+                        <li><input type="checkbox" name="" id="">ศุกร์</li>
+                        <li><input type="checkbox" name="" id="">เสาร์</li>
+                        <li><input type="checkbox" name="" id="">อาทิตย์</li>
+                    </ul>
+                    <ul>
+                        <li>เวลาตรวจ</li>
+                        <li><input type="checkbox" name="" id="">ทุกเวลา</li>
+                        <li><input type="checkbox" name="" id="">ช่วงเช้า</li>
+                        <li><input type="checkbox" name="" id="">ช่วงบ่าย</li>
+                    </ul>
+                </div>
+            </div>   
+        </form>
     </section>
+
     <main-footer></main-footer>
 
 <!-- script -->
