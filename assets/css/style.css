@@ -10,8 +10,8 @@ html ,body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'modern','Kanit',sans-serif;   
-    font-size: 1.2rem; 
+    font-family: 'Kanit','Kanit',sans-serif;   
+    font-size: 1rem; 
     color: #3e66b0;     
   -webkit-overflow-scrolling: touch; 
 }

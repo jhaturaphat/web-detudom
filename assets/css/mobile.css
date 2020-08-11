@@ -2,8 +2,11 @@
 and (min-width : 320px) 
 and (max-width : 480px) {
 html, body {
-  font-size: 0.9rem !important;       
+  font-size: 1rem !important;       
 }   
+button{
+  padding: 8px 20px;
+}
 .ft-menu-item >ul li{
     font-size: 0.8rem !important;
 } 

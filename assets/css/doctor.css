@@ -36,7 +36,7 @@ div.content img{
   }
 .s-filter{
     position: relative;
-    width: 80%; 
+    width: 90%; 
     margin: 0 auto;
 }
 .s-filter-item{
@@ -55,8 +55,43 @@ div.content img{
     width: 90px; 
     padding-left: 15px;
 }
-.s-filter-item ul:first{
-    padding-top: 20px;
+.s-filter-item ul:first-child{
+    padding-top: 15px;
+}
+.s-filter-item ul:last-child{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+.s-filter-item button{   
+    float: right;
+    margin: 0px 10px 10px 10px;
+    background-color: #fa79c9;
+    border: none;
+    color: white;
+    padding: 10px 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.s-filter-item button:hover{
+    background-color: #f760bd;
 }
 
-
+@media only screen and (max-width: 480px) and (min-width: 320px){
+    .form-g{
+        display: grid;
+        width: 90%;
+    }
+    .form-ctl {
+        width: 100%;        
+        padding: 5px 4%;
+    } 
+    .content{
+        display: grid;
+    }
+    .content img{
+        margin: 0 auto;
+    }
+}
