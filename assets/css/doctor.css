@@ -79,6 +79,24 @@ div.content img{
     background-color: #f760bd;
 }
 
+/* ส่วนของ หมอ */
+.doctor{
+    width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card-x{
+    position: relative;
+    width: 80%;   
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+.card-x img {
+    margin: 0 auto;
+    width: 100%;
+}
+
 @media only screen and (max-width: 480px) and (min-width: 320px){
     .form-g{
         display: grid;
@@ -93,5 +111,8 @@ div.content img{
     }
     .content img{
         margin: 0 auto;
+    }
+    .doctor{
+        grid-template-columns: 1fr;
     }
 }
