@@ -21,7 +21,7 @@ class Header extends HTMLElement  {
                   จัดการแพทย์
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">UpProfile แพทย์</a></li>
+                  <li><a class="dropdown-item" href="doctor-profile.html">UpProfile แพทย์</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -30,11 +30,7 @@ class Header extends HTMLElement  {
               <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </ul>            
           </div>
         </div>
       </nav>
