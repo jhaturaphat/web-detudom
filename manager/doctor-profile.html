@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="assests/css/bootstrap.min.css">
     <link rel="stylesheet" href="assests/css/style.css">
     <script src="assests/main.js"></script>
+    <script src="assests/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main-header></main-header>
-    <div class="container">
+    <div class="container" id="vue-app">
         <!-- Content here -->        
             <form>
                 <div class="row">
@@ -34,7 +36,10 @@
                     </div>
                     <div class="col mb-2">
                       <label for="inputEmail4">เฉพาะทาง</label>
-                      <input type="text" class="form-control" placeholder="เฉพาะทาง">
+                     <select class="form-control"  name="branch" >
+                       <option value="">--เลือกสาขา--</option>
+                        <option v-for="branch in branchs" :value="branch.id">{{branch.name_th}}</option>
+                     </select> 
                     </div>
                     <div class="col mb-2">
                       <label for="inputEmail4">รายละเอียด</label>
@@ -44,41 +49,41 @@
                     <div class="form-row">
                       <h4>วัน-เวลา ออกตรวจ</h4>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="mon">
                         <label class="form-check-label" for="inlineCheckbox1">จันทร์</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="tue">
                         <label class="form-check-label" for="inlineCheckbox2">อังคาร</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="wed">
                         <label class="form-check-label" for="inlineCheckbox3">พุทธ</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="thu">
                         <label class="form-check-label" for="inlineCheckbox4">พฤหัสบดี</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="fri">
                         <label class="form-check-label" for="inlineCheckbox5">ศุกร์</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="sat">
                         <label class="form-check-label" for="inlineCheckbox6">เสาร์</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="sun">
                         <label class="form-check-label" for="inlineCheckbox7">อาทิตย์</label>
                       </div>
                       <div class="form-row">
                         <h4>ช่วง-เวลา</h4>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="morning">
                           <label class="form-check-label" for="inlineCheckbox1">เข้า</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="afternoon">
                           <label class="form-check-label" for="inlineCheckbox2">บ่าย</label>
                         </div>  
                     </div>
@@ -96,6 +101,30 @@
       </div>
       <div class="mb-5"></div>
     
-    <script src="assests/js/bootstrap.min.js"></Script>
+    <script src="assests/js/bootstrap.min.js"></Script>   
+    
 </body>
 </html>
+
+<script>
+  var app = new Vue({
+    el: '#vue-app',
+    data:{
+      branchs:null,
+      work_date:null,
+      time_period:null
+    },
+    mounted() {
+      axios.get('http://localhost:9000/api/get/branch')
+      .then(response => {
+        this.branchs = response.data;        
+      });
+
+      axios.get('http://localhost:9000/api/get/work-date')
+      .then(response => {
+        this.work_date = response.data;
+        console.log(response);
+      })
+    }
+})
+</script>

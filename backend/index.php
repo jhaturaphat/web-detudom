@@ -7,8 +7,8 @@ header('Content-type: application/json; charset=utf-8');
 
 require_once    './configs/defines.php';
 require_once    './configs/warning.php';
-require         './configs/routes.php';
-require_once    './configs/database.php';
+require_once    './configs/routes.php';
+require_once    './configs/databases.php';
 
 
 if($method === 'OPTIONS') exit;
