@@ -6,15 +6,13 @@
     <title>ระบบหลังบ้าน</title>
     <link rel="stylesheet" href="assests/css/bootstrap.min.css">
     <link rel="stylesheet" href="assests/css/style.css">
-    <script src="assests/main.js"></script>
-    <script src="assests/vue.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assests/main.js"></script>  
 </head>
 <body>
     <main-header></main-header>
     <div class="container" id="vue-app">
         <!-- Content here -->        
-            <form>
+            <form @submit="submit">
                 <div class="row">
                   <div class="col-md-4">
                     <img src="assests/images/หมอครองแก้ว.jpg" class="img-fluid" alt="Responsive image" width="">
@@ -24,71 +22,43 @@
                   <div class="col-md-8">
                     <div class="col col-sm-2 mb-2">
                       <label for="inputEmail4">คำนำหน้า</label>
-                      <input type="text" class="form-control" placeholder="คำนำหน้า">
+                      <input type="text" class="form-control" v-model="form.prefix" placeholder="คำนำหน้า">
                     </div>
                     <div class="col mb-2">
                       <label for="inputEmail4">ชื่อ</label>
-                      <input type="text" class="form-control" placeholder="ชื่อ">
+                      <input type="text" class="form-control" v-model="form.fname_th" placeholder="ชื่อ">
                     </div>
                     <div class="col mb-2">
                       <label for="inputEmail4">นามสกุล</label>
-                      <input type="text" class="form-control" placeholder="นามสกุล">
+                      <input type="text" class="form-control" v-model="form.lname_th" placeholder="นามสกุล">
                     </div>
                     <div class="col mb-2">
                       <label for="inputEmail4">เฉพาะทาง</label>
-                     <select class="form-control"  name="branch" >
-                       <option value="">--เลือกสาขา--</option>
-                        <option v-for="branch in branchs" :value="branch.id">{{branch.name_th}}</option>
-                     </select> 
+                     <select class="form-control"  name="branch" :value="form.branch" v-model="form.branch">
+                       <option value="" >--เลือกสาขา--</option>
+                        <option v-for="branch in branchs" :value="branch.id" >{{branch.name_th}}</option>
+                     </select>                      
                     </div>
                     <div class="col mb-2">
                       <label for="inputEmail4">รายละเอียด</label>
-                      <textarea class="form-control" cols="10" rows="5"></textarea>
+                      <textarea class="form-control" v-model="form.detail" cols="10" rows="5"></textarea>
                     </div>
                     <!-- วันเวลาออกตรวจ -->
                     <div class="form-row">
                       <h4>วัน-เวลา ออกตรวจ</h4>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="mon">
-                        <label class="form-check-label" for="inlineCheckbox1">จันทร์</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="tue">
-                        <label class="form-check-label" for="inlineCheckbox2">อังคาร</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="wed">
-                        <label class="form-check-label" for="inlineCheckbox3">พุทธ</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="thu">
-                        <label class="form-check-label" for="inlineCheckbox4">พฤหัสบดี</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="fri">
-                        <label class="form-check-label" for="inlineCheckbox5">ศุกร์</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="sat">
-                        <label class="form-check-label" for="inlineCheckbox6">เสาร์</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="sun">
-                        <label class="form-check-label" for="inlineCheckbox7">อาทิตย์</label>
-                      </div>
+                      <div class="form-check form-check-inline" v-for="item in work_dates">
+                        <input class="form-check-input" type="checkbox" v-model="form.work_date" :id="item.id" :value="item.id">
+                        <label class="form-check-label" :for="item.id">{{item.name}}</label>
+                      </div>                      
                       <div class="form-row">
                         <h4>ช่วง-เวลา</h4>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="morning">
-                          <label class="form-check-label" for="inlineCheckbox1">เข้า</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="afternoon">
-                          <label class="form-check-label" for="inlineCheckbox2">บ่าย</label>
-                        </div>  
+                        <div class="form-check form-check-inline" v-for="item in time_periods">
+                          <input class="form-check-input" type="checkbox" v-model="form.time_period" :id="item.prefix" :value="item.id">
+                          <label class="form-check-label" :for="item.prefix">{{item.name}}</label>
+                        </div>                        
                     </div>
                     <!-- บันทึก -->
-                    <button type="button" class="btn btn-success float-right">
+                    <button type="submit" class="btn btn-success float-right">
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-upload" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8zM5 4.854a.5.5 0 0 0 .707 0L8 2.56l2.293 2.293A.5.5 0 1 0 11 4.146L8.354 1.5a.5.5 0 0 0-.708 0L5 4.146a.5.5 0 0 0 0 .708z"/>
                         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 2z"/>
@@ -102,29 +72,55 @@
       <div class="mb-5"></div>
     
     <script src="assests/js/bootstrap.min.js"></Script>   
-    
+    <script src="assests/Vuejs/vue.min.js"></script>
+    <script src="assests/Vuejs/axios.min.js"></script>    
+    <script src="assests/script.js"></script>
+    <script src="assests/token-service.js"></script>
 </body>
 </html>
 
 <script>
+  let _URL_ = "http://localhost:9000/api";
   var app = new Vue({
     el: '#vue-app',
     data:{
       branchs:null,
-      work_date:null,
-      time_period:null
+      work_dates:null,
+      time_periods:null,
+      form: {
+        prefix:'นาย',
+        fname_th:'จตุรภัทร',
+        lname_th:'ศิริบูรณ์',
+        branch:'2',
+        detail:'ทดสอบส่งข้อมูล',
+        work_date: ['MON','WED','FRI'],
+        time_period: ['1','2'],
+        branch: []
+      }
     },
-    mounted() {
-      axios.get('http://localhost:9000/api/get/branch')
+    mounted() {          
+      
+      axios.get(_URL_+'/get/branch')
       .then(response => {
         this.branchs = response.data;        
       });
 
-      axios.get('http://localhost:9000/api/get/work-date')
+      axios.get(_URL_+'/get/work-date')
       .then(response => {
-        this.work_date = response.data;
-        console.log(response);
+        this.work_dates = response.data;        
+      });
+
+      axios.get(_URL_+'/get/time-period')
+      .then(response => {
+        this.time_periods = response.data;        
       })
+    },
+
+    methods: {
+      submit:function(e){
+        e.preventDefault();
+        axios.post(_URL_+'/doctor', this.form);
+      }
     }
 })
 </script>

@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ระบบหลังบ้าน</title>
-    <link rel="stylesheet" href="assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assests/css/bootstrap.min.css" />
     <script src="assests/main.js"></script>
-</head>
-<body>
-    <main-header></main-header>
+    <script src="assests/Vuejs/vue.min.js"></script>
+    <script src="assests/Vuejs/axios.min.js"></script>
+    <script src="assests/Vuejs/vue-router.js"></script>
     
-   
-    <script src="assests/js/bootstrap.min.js"></Script>
-</body>
+  </head>
+  <body>
+    <div id="app">
+      <main-header></main-header>
+
+      <router-view></router-view>
+    </div>
+    <script src="assests/js/bootstrap.min.js"></script>
+  </body>
 </html>
+<script>
+  
+  const router = new VueRouter({
+    routes: [
+        {
+            path:'/home',
+            component:{
+                template:'test.html'
+            }            
+        }
+    ]
+});
+
+new Vue({
+  router
+}).$mount('#app');
+
+</script>
